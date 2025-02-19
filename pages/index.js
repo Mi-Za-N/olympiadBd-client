@@ -4,8 +4,9 @@ import { Card, List, Typography, Spin, Button, Modal, message } from 'antd';
 import { CalendarOutlined } from '@ant-design/icons';
 import { Context } from "../context";
 import { useRouter } from "next/router";
-// import { Swiper, SwiperSlide } from 'swiper/react';
-// import 'swiper/swiper-bundle.css'; // Import Swiper styles
+import ReactPlayer from "react-player";
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css'; // Import Alice Carousel styles
 
 const { Title, Text } = Typography;
 
@@ -96,7 +97,7 @@ const Index = () => {
 
   return (
     <div style={{ padding: '24px' }}>
-      <Title level={2}>Quizzes</Title>
+      
       {loading ? (
         <Spin size="large" style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }} />
       ) : quizzes.length > 0 ? (
@@ -140,29 +141,30 @@ const Index = () => {
                 ]}
               >
                 <Text>{quiz.description}</Text>
-                {/* <Swiper
-                  spaceBetween={10}
-                  slidesPerView={1}
-                  navigation
-                  pagination={{ clickable: true }}
+                <br />
+                <br />
+                <AliceCarousel
+                  autoPlay
+                  autoPlayInterval={3000}
+                  infinite
+                  disableButtonsControls={true}
+                  disableDotsControls={true}
                 >
                   {quiz.imageOne && (
-                    <SwiperSlide>
-                      <img src={quiz.imageOne} alt="Image One" style={{ width: '100%', height: 'auto' }} />
-                    </SwiperSlide>
+                    <img src={quiz.imageOne} alt="Image One" style={{ width: '100%', height: 'auto' }} />
                   )}
                   {quiz.imageTwo && (
-                    <SwiperSlide>
-                      <img src={quiz.imageTwo} alt="Image Two" style={{ width: '100%', height: 'auto' }} />
-                    </SwiperSlide>
+                    <img src={quiz.imageTwo} alt="Image Two" style={{ width: '100%', height: 'auto' }} />
                   )}
-                </Swiper> */}
+                </AliceCarousel>
                 {quiz.videoURL && (
                   <div style={{ marginTop: '16px' }}>
-                    <video controls style={{ width: '100%' }}>
-                      <source src={quiz.videoURL} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
+                    <ReactPlayer
+                      url={quiz.videoURL}
+                      width="100%"
+                      height="100%"
+                      controls
+                    />
                   </div>
                 )}
               </Card>
