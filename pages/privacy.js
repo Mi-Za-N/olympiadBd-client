@@ -1,87 +1,76 @@
 import React from 'react';
-import { Typography, Layout, Divider } from 'antd';
+import { Typography, Card } from 'antd';
 
 const { Title, Paragraph } = Typography;
-const { Content } = Layout;
 
 const PrivacyPolicy = () => {
   return (
-    <Layout style={{ backgroundColor: '#fff', padding: '24px' }}>
-      <Content>
-        <Typography>
-          <Title level={2}>Privacy Policy</Title>
-          <Paragraph>
-            Welcome to Cherag! This Privacy Policy explains how we collect, use, and protect your
-            information when you use our platform.
-          </Paragraph>
+    <Card style={{ padding: '20px', maxWidth: '800px', margin: '0 auto' }}>
+      <Title level={2}>Privacy Policy</Title>
+      <Paragraph>
+        Welcome to <strong>Olympiad Bangladesh</strong>! This Privacy Policy explains how we collect, use, and protect your personal information when you use our app. By signing up and using our services, you agree to the terms outlined in this policy.
+      </Paragraph>
 
-          <Divider />
-          <Title level={3}>Information We Collect</Title>
-          <Paragraph>
-            <strong>For Users:</strong> When you place an order, we collect your mobile number and
-            address to process and deliver your order. No sign-in is required for users.
-          </Paragraph>
-          <Paragraph>
-            <strong>For Entrepreneurs/Vendors:</strong> To manage your business on Cherag, you need
-            to sign up and sign in. During this process, we collect your email address, password,
-            and any other information you choose to provide to set up your store.
-          </Paragraph>
+      <Title level={3}>1. Information We Collect</Title>
+      <Paragraph>
+        When you create an account on Olympiad Bangladesh, we collect the following information:
+        <ul>
+          <li><strong>Personal Information:</strong> Your name, email address, phone number, and school details.</li>
+          <li><strong>Quiz Data:</strong> Your quiz responses, scores, and leaderboard rankings.</li>
+          <li><strong>Device Information:</strong> Device type, operating system, and IP address for technical support and analytics.</li>
+        </ul>
+      </Paragraph>
 
-          <Divider />
-          <Title level={3}>How We Use Your Information</Title>
-          <Paragraph>
-            The information collected is used to:
-          </Paragraph>
-          <ul>
-            <li>Process and deliver user orders.</li>
-            <li>Enable entrepreneurs to manage their stores.</li>
-            <li>Communicate with users and vendors about orders and updates.</li>
-            <li>Improve the functionality and user experience of Cherag.</li>
-          </ul>
+      <Title level={3}>2. How We Use Your Information</Title>
+      <Paragraph>
+        We use your information for the following purposes:
+        <ul>
+          <li>To create and manage your account.</li>
+          <li>To allow you to participate in quizzes and contests.</li>
+          <li>To display your results on the leaderboard after the quiz period ends.</li>
+          <li>To send you notifications about upcoming quizzes and results.</li>
+          <li>To provide technical support and improve our app.</li>
+        </ul>
+      </Paragraph>
 
-          <Divider />
-          <Title level={3}>Data Sharing</Title>
-          <Paragraph>
-            We value your privacy. Your information will only be shared with third parties in the
-            following cases:
-          </Paragraph>
-          <ul>
-            <li>With delivery services to fulfill orders.</li>
-            <li>As required by law or legal proceedings.</li>
-            <li>To protect the rights and safety of Cherag users and the platform.</li>
-          </ul>
+      <Title level={3}>3. Data Security</Title>
+      <Paragraph>
+        We take your privacy seriously and implement industry-standard security measures to protect your data. However, no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.
+      </Paragraph>
 
-          <Divider />
-          <Title level={3}>Data Security</Title>
-          <Paragraph>
-            We implement reasonable security measures to protect your information from unauthorized
-            access, disclosure, alteration, or destruction. However, no method of transmission over
-            the internet is completely secure.
-          </Paragraph>
+      <Title level={3}>4. Sharing Your Information</Title>
+      <Paragraph>
+        We do not sell, trade, or share your personal information with third parties except in the following cases:
+        <ul>
+          <li>To comply with legal obligations or government requests.</li>
+          <li>To provide you with surprise gifts for top 50 competitors (e.g., sharing your address with a delivery partner).</li>
+        </ul>
+      </Paragraph>
 
-          <Divider />
-          <Title level={3}>Your Rights</Title>
-          <Paragraph>
-            As a user, you have the right to access, update, or delete the information you provide
-            to us. Entrepreneurs can manage their account details through their dashboard.
-          </Paragraph>
+      <Title level={3}>5. Leaderboard and Quiz Results</Title>
+      <Paragraph>
+        After the quiz period ends, your results will be displayed on the leaderboard. Only your name, score, and ranking will be visible to other users.
+      </Paragraph>
 
-          <Divider />
-          <Title level={3}>Updates to This Policy</Title>
-          <Paragraph>
-            We may update this Privacy Policy from time to time. Any changes will be posted on this
-            page, and we encourage you to review it periodically.
-          </Paragraph>
+      <Title level={3}>6. Children's Privacy</Title>
+      <Paragraph>
+        Olympiad Bangladesh is designed for students of all ages. If you are under 13, please ensure you have parental consent before creating an account.
+      </Paragraph>
 
-          <Divider />
-          <Title level={3}>Contact Us</Title>
-          <Paragraph>
-            If you have any questions about this Privacy Policy, please contact us at
-            support@cherag.com.
-          </Paragraph>
-        </Typography>
-      </Content>
-    </Layout>
+      <Title level={3}>7. Changes to This Policy</Title>
+      <Paragraph>
+        We may update this Privacy Policy from time to time. Any changes will be posted in the app, and your continued use of Olympiad Bangladesh constitutes acceptance of the updated policy.
+      </Paragraph>
+
+      <Title level={3}>8. Contact Us</Title>
+      <Paragraph>
+        If you have any questions or concerns about this Privacy Policy, please contact us at:
+        <br />
+        <strong>Email:</strong> olympiadbd2025@gmail.com
+        <br />
+        <strong>Phone:</strong> +880-01511-360724
+      </Paragraph>
+    </Card>
   );
 };
 
