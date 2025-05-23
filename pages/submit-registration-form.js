@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Card, Input, Button, Checkbox, Typography, message } from "antd";
+import { CopyOutlined } from "@ant-design/icons";
 import axios from "axios";
 
 const { Title, Text } = Typography;
@@ -41,6 +42,12 @@ const DigitalWalletForm = () => {
     { name: "Nagad", logo: "✅", number: "01788-595619" },
   ];
 
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text.replace(/-/g, '')) // Remove dashes before copying
+      .then(() => message.success('Number copied!'))
+      .catch(() => message.error('Failed to copy number'));
+  };
+
   const handleSubmit = async () => {
     const isFormValid = Object.values(checkedFields).every((field) => field);
     if (isFormValid) {
@@ -69,10 +76,26 @@ const DigitalWalletForm = () => {
       <Card title="Send Money" style={{ marginBottom: "16px" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
           {wallets.map((wallet) => (
-            <div key={wallet.number} style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <div 
+              key={wallet.number} 
+              style={{ 
+                display: "flex", 
+                alignItems: "center", 
+                gap: "10px",
+                padding: "8px",
+                borderRadius: "4px",
+                backgroundColor: "#f5f5f5"
+              }}
+            >
               <Text style={{ fontSize: "16px" }}>{wallet.logo}</Text>
               <Text strong>{wallet.name}</Text>
               <Text>{wallet.number}</Text>
+              <Button 
+                type="text" 
+                icon={<CopyOutlined />} 
+                onClick={() => copyToClipboard(wallet.number)}
+                style={{ marginLeft: "auto" }}
+              />
             </div>
           ))}
         </div>
@@ -116,10 +139,10 @@ const DigitalWalletForm = () => {
         />
         {formErrors.trxnId && <Text type="danger">{formErrors.trxnId}</Text>}
 
-        <Title level={5} style={{ marginTop: "5px" }}>Your School Name (optional)</Title>
+        <Title level={5} style={{ marginTop: "5px" }}>Institution Name (optional)</Title>
         <Input.TextArea
           rows={3}
-          placeholder="Enter Your School Name"
+          placeholder="Enter Institution Name"
           value={formData.description}
           onChange={(e) => handleInputChange("description", e.target.value)}
         />
@@ -255,7 +278,7 @@ export default DigitalWalletForm;
 //         <Title level={5} style={{ marginTop: "12px" }}>School Name</Title>
 //         <Input.TextArea
 //           rows={3}
-//           placeholder="Enter Your School Name"
+//           placeholder="Enter Institution Name"
 //           value={formData.description}
 //           onChange={(e) => handleInputChange("description", e.target.value)}
 //         />

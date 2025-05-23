@@ -35,7 +35,7 @@ const HomePage = () => {
     />
   ));
 
-  const videoURL = "https://bongopos.s3.ap-southeast-1.amazonaws.com/OlympiadVideo.mp4"; // Replace with your video URL
+  // const videoURL = "https://bongopos.s3.ap-southeast-1.amazonaws.com/OlympiadVideo.mp4"; // Replace with your video URL
 
   return (
     <div style={{ padding: "16px" }}>
@@ -78,7 +78,7 @@ const HomePage = () => {
       </Row>
 
       {/* Promotional Video Section */}
-      <Row justify="center" style={{ marginBottom: "24px" }}>
+      {/* <Row justify="center" style={{ marginBottom: "24px" }}>
         <Col xs={24} sm={20} md={16} lg={12}>
           <ReactPlayer
             url={videoURL}
@@ -88,7 +88,7 @@ const HomePage = () => {
             style={{ marginTop: "16px" }}
           />
         </Col>
-      </Row>
+      </Row> */}
 
       {/* Call to Action Section */}
       <Row justify="center" style={{ marginBottom: "24px" }}>
