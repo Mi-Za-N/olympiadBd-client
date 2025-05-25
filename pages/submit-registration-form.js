@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Input, Button, Checkbox, Typography, message } from "antd";
+import { Card, Input, Button, Checkbox, Typography, message, Modal } from "antd";
 import { CopyOutlined } from "@ant-design/icons";
 import axios from "axios";
 
@@ -9,6 +9,7 @@ const DigitalWalletForm = () => {
   const [formData, setFormData] = useState({ name: "", email: "", mobile: "", trxnId: "", description: "" });
   const [checkedFields, setCheckedFields] = useState({ name: false, email: false, mobile: false, trxnId: false });
   const [formErrors, setFormErrors] = useState({});
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleInputChange = (field, value) => {
     setFormData({ ...formData, [field]: value });
@@ -37,7 +38,7 @@ const DigitalWalletForm = () => {
   };
 
   const wallets = [
-    { name: "Bkash", logo: "✅", number: "0788-595619" },
+    { name: "Bkash", logo: "✅", number: "01788-595619" },
     { name: "Bkash", logo: "✅", number: "01306-296138" },
     { name: "Nagad", logo: "✅", number: "01788-595619" },
   ];
@@ -54,6 +55,9 @@ const DigitalWalletForm = () => {
       try {
         const { data } = await axios.post(`/api/submit-form`, { ...formData });
         message.success("Form submitted successfully!");
+        
+        // Show the success modal
+        setIsModalVisible(true);
 
         // Clear form fields after successful submission
         setFormData({ name: "", email: "", mobile: "", trxnId: "", description: "" });
@@ -66,6 +70,10 @@ const DigitalWalletForm = () => {
     } else {
       message.error("Please fill out all fields correctly.");
     }
+  };
+
+  const handleModalOk = () => {
+    setIsModalVisible(false);
   };
 
   const isSubmitDisabled = !Object.values(checkedFields).every((field) => field);
@@ -152,12 +160,36 @@ const DigitalWalletForm = () => {
       <Button type="primary" block style={{ marginTop: "16px" }} onClick={handleSubmit} disabled={isSubmitDisabled}>
         Submit
       </Button>
+
+      {/* Success Modal */}
+      <Modal
+          title="🎉 Registration Successful!"
+          open={isModalVisible}
+          onOk={handleModalOk}
+          onCancel={handleModalOk}
+          footer={[
+            <Button key="submit" type="primary" onClick={handleModalOk}>
+              Got it!
+            </Button>
+          ]}
+        >
+          <div style={{ textAlign: 'center' }}>
+            <p style={{ fontSize: '16px', marginBottom: '16px' }}>
+              <strong>Congratulations!</strong> Your registration is now complete.
+            </p>
+            <p style={{ fontSize: '14px', marginBottom: '8px' }}>
+              You'll receive your app login credentials shortly via email/SMS.
+            </p>
+            <p style={{ fontSize: '14px', color: '#666' }}>
+              Our team will contact you if we need any additional information.
+            </p>
+          </div>
+        </Modal>
     </div>
   );
 };
 
 export default DigitalWalletForm;
-
 
 
 
